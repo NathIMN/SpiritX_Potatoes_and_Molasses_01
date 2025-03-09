@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const passwordStrengthDiv = document.getElementById("pw-strength");
 
-  const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/; // Password regex
+  const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/; // Password regex
 
   // Function to check username uniqueness
   const checkUsernameUnique = async (username) => {
@@ -73,32 +73,32 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.classList.add("bi-x-circle-fill");
     });
 
-    if (passwordValue.length >= 8) {
+    // if (passwordValue.length >= 8) {
+    //   passwordStrengthIcons[0].classList.remove("text-danger");
+    //   passwordStrengthIcons[0].classList.add("text-success");
+    //   passwordStrengthIcons[0].classList.remove("bi-x-circle-fill");
+    //   passwordStrengthIcons[0].classList.add("bi-check-circle-fill");
+    // }
+
+    if (/[a-z]/.test(passwordValue)) {
       passwordStrengthIcons[0].classList.remove("text-danger");
       passwordStrengthIcons[0].classList.add("text-success");
       passwordStrengthIcons[0].classList.remove("bi-x-circle-fill");
       passwordStrengthIcons[0].classList.add("bi-check-circle-fill");
     }
 
-    if (/[a-z]/.test(passwordValue)) {
+    if (/[A-Z]/.test(passwordValue)) {
       passwordStrengthIcons[1].classList.remove("text-danger");
       passwordStrengthIcons[1].classList.add("text-success");
       passwordStrengthIcons[1].classList.remove("bi-x-circle-fill");
       passwordStrengthIcons[1].classList.add("bi-check-circle-fill");
     }
 
-    if (/[A-Z]/.test(passwordValue)) {
+    if (/[!@#$%^&*]/.test(passwordValue)) {
       passwordStrengthIcons[2].classList.remove("text-danger");
       passwordStrengthIcons[2].classList.add("text-success");
       passwordStrengthIcons[2].classList.remove("bi-x-circle-fill");
       passwordStrengthIcons[2].classList.add("bi-check-circle-fill");
-    }
-
-    if (/[!@#$%^&*]/.test(passwordValue)) {
-      passwordStrengthIcons[3].classList.remove("text-danger");
-      passwordStrengthIcons[3].classList.add("text-success");
-      passwordStrengthIcons[3].classList.remove("bi-x-circle-fill");
-      passwordStrengthIcons[3].classList.add("bi-check-circle-fill");
     }
 
     if (!passwordRegEx.test(passwordValue)) {

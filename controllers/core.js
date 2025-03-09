@@ -47,9 +47,14 @@ const signOut = (req, res) => {
   });
 };
 
+const errorPage = (req, res) => {
+  res.render("error-page", { user: req.session.user, page: "error" });
+};
+
 module.exports = {
   index,
   signUp,
   signIn,
   signOut,
+  errorPage,
 };

@@ -4,9 +4,8 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const users = require("./routes/users");
-const spiriter = require("./routes/spiriter");
 const core = require("./routes/core");
-//const notFound = require("./middleware/not-found"); //404 handler
+const notFound = require("./middleware/not-found"); //404 handler
 const rateLimiter = require("express-rate-limit");
 
 app.set("view engine", "ejs");
@@ -35,11 +34,9 @@ app.use(
 //routes
 app.use("/api/v1/users", users);
 
-app.use("/api/v1/spiriter", spiriter);
-
 app.use("/", core);
 
-//app.use(notFound);
+app.use(notFound);
 
 const port = 3000;
 
