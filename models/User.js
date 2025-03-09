@@ -28,9 +28,9 @@ const UserSchema = new mongoose.Schema({
       "password must contain at least one lowercase letter, one uppercase letter, and one special character",
     ],
   },
-});
+}); //db schema for User collection
 
-UserSchema.plugin(sequence, { inc_field: "userId", start_seq: 1000 });
+UserSchema.plugin(sequence, { inc_field: "userId", start_seq: 1000 }); //auto increment
 
 UserSchema.pre("save", hashPassword);
 

@@ -56,12 +56,12 @@ const authUser = async (req, res) => {
       res.status(400).json({ msg: "username and password required" });
       return;
     }
-    if (!validatePassword(pw)) {
-      res.status(400).json({
-        msg: "password must contain at least one lowercase letter, one uppercase letter, and one special character",
-      });
-      return;
-    }
+    // if (!validatePassword(pw)) {
+    //   res.status(400).json({
+    //     msg: "password must contain at least one lowercase letter, one uppercase letter, and one special character",
+    //   });
+    //   return;
+    // }
     const user = await User.findOne({ username: username });
     if (!user) {
       res.status(404).json({ msg: `user not found with username: ${username}` });
